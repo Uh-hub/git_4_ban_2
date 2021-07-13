@@ -16,7 +16,7 @@ def hello_world(request):
         new_model.text = temp
         new_model.save()
 
-        return HttpResponseRedirect(reverse('accoountapp:hello_world'))
+        return HttpResponseRedirect(reverse('accountapp:hello_world'))
 
 
         return render(request, 'accountapp/hello_world.html', context={'data_list': data_list})
