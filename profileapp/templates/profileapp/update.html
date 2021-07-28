@@ -7,7 +7,7 @@
             <h4>Create Profile</h4>
         </div>
         <div>
-            <form action="{% url 'profileapp:create' %}"
+            <form action="{% url 'profileapp:create' pk=target_profile.pk %}"
                   enctype="multipart/>form-data"
                   method="post">
                 {% csrf_token %}
