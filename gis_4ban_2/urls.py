@@ -7,4 +7,5 @@ urlpatterns = [
     path('profiles/', include('profileapp.urls')),
     path('articles/', include('articleapp.urls')),
     path('comments/', include('commentapp.urls')),
+    path('projects/', include('projectapp.urls')),
 ]
