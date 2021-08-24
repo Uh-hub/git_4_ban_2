@@ -20,16 +20,13 @@ from articleapp.models import Article
 def hello_world(request):
     if request.method == "POST":
 
-        temp = request.POST.get('input_text')
+        temp = request.POST.get('next')
 
         new_model = NewModel()
         new_model.text = temp
         new_model.save()
 
         return HttpResponseRedirect(reverse('accountapp:hello_world'))
-
-
-        return render(request, 'accountapp/hello_world.html', context={'data_list': data_list})
 
     else:
         data_list = NewModel.objects.all()
@@ -66,6 +63,9 @@ class AccountUpdateView(UpdateView):
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/update.html'
+
+    def get_success_url(self):
+        return reverse('accountapp:detail', kwargs={'pk': self.object.pk})
 
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')
